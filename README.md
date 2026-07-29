@@ -1,5 +1,7 @@
 # Tasktracker: CLI TODO App
 
+Project concept: [Task Tracker](https://roadmap.sh/projects/task-tracker)
+
 ## 📖 Description
 
 **Tasktracker** is a lightweight command-line interface (CLI) application for efficient task management.  
