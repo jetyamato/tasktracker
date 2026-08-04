@@ -39,19 +39,28 @@ class Taskcli:
                 return
         print("Task not found")
 
-    def list_tasks(self, status):
-        headers = ["ID", "Description", "Status"]
-        rows = []
+    def list_tasks(self, status: str = "all"):
+        tasks = sorted(self.get_tasks(status), key=lambda t: t.id)
 
-        for task in self.tasks:
-            if status == "all" or task.status == status:
-                rows.append([
-                    task.id,
-                    task.description,
-                    task.status
-                ])
+        if not tasks:
+            print("No matching tasks found.")
+            return
 
-        print(tabulate(rows, headers, tablefmt="rounded_outline"))
+        rows = [
+            [task.id, task.description, task.status]
+            for task in tasks
+        ]
+
+        print(tabulate(
+            rows,
+            headers=["ID", "Description", "Status"],
+            tablefmt="rounded_outline"
+        ))
+
+    def get_tasks(self, status: str = "all"):
+        if status == "all":
+            return self.tasks
+        return [task for task in self.tasks if task.status == status]
 
     def mark_done(self, id: int):
         for task in self.tasks: 
