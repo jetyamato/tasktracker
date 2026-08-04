@@ -28,6 +28,7 @@ class Taskcli:
                 self.writeToJson()
                 print("Task updated successfully")
                 return
+        print("Task not found")
 
     def delete(self, id: int):
         for index, task in enumerate(self.tasks):
@@ -36,6 +37,7 @@ class Taskcli:
                 self.writeToJson()
                 print("Task deleted successfully")
                 return
+        print("Task not found")
 
     def list_tasks(self, status):
         headers = ["ID", "Description", "Status"]
@@ -59,6 +61,7 @@ class Taskcli:
                 self.writeToJson()
                 print("Task updated successfully")
                 return
+        print("Task not found")
 
     def mark_todo(self, id: int):
         for task in self.tasks:
@@ -68,6 +71,7 @@ class Taskcli:
                 self.writeToJson()
                 print("Task updated successfully")
                 return
+        print("Task not found")
 
     def mark_in_progress(self, id: int):
         for task in self.tasks:
@@ -77,6 +81,7 @@ class Taskcli:
                 self.writeToJson()
                 print("Task updated successfully")
                 return
+        print("Task not found")
 
     def writeToJson(self):
         json_string = json.dumps(self.tasks, default=lambda o: o.__dict__, indent=4)
